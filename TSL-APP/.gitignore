@@ -10,6 +10,15 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+###> node/fontawasome ###
+/node_modules/
+###< node/fontawasome ###
+
+###> assets/image-demo ###
+/assets/
+/assets/
+###< assets/image-demo ###
+
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
