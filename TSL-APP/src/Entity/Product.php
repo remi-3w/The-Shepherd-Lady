@@ -49,6 +49,11 @@ class Product
      */
     private $Category;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Price;
+
     public function __construct()
     {
         $this->Category = new ArrayCollection();
@@ -64,7 +69,7 @@ class Product
         return $this->Name;
     }
 
-    public function setName(string $Name): self
+    public function setName(?string $Name): self
     {
         $this->Name = $Name;
 
@@ -76,7 +81,7 @@ class Product
         return $this->Description;
     }
 
-    public function setDescription(string $Description): self
+    public function setDescription(?string $Description): self
     {
         $this->Description = $Description;
 
@@ -88,7 +93,7 @@ class Product
         return $this->Stock;
     }
 
-    public function setStock(int $Stock): self
+    public function setStock(?int $Stock): self
     {
         $this->Stock = $Stock;
 
@@ -100,7 +105,7 @@ class Product
         return $this->Picture;
     }
 
-    public function setPicture(string $Picture): self
+    public function setPicture(?string $Picture): self
     {
         $this->Picture = $Picture;
 
@@ -112,7 +117,7 @@ class Product
         return $this->Slug;
     }
 
-    public function setSlug(string $Slug): self
+    public function setSlug(?string $Slug):? self
     {
         $this->Slug = $Slug;
 
@@ -139,6 +144,18 @@ class Product
     public function removeCategory(Category $category): self
     {
         $this->Category->removeElement($category);
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->Price;
+    }
+
+    public function setPrice(?int $Price): self
+    {
+        $this->Price = $Price;
 
         return $this;
     }

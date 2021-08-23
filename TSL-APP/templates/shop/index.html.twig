@@ -23,9 +23,11 @@
                             </div> #}
                     </div>
                     <div class="card-body">
-                        <a href="shop-single.html" class="h3 text-decoration-none d-flex ">{{ p.name }}</a>
-                        <span class="d-inline-flex badge rounded-pill bg-primary mb-1">Category 1</span>
-                        <span class="d-inline-flex badge rounded-pill bg-success mb-1">Category 2</span>                                  
+                        <a href="shop-single.html" class="h3 text-decoration-none d-flex ">{{ p.name }} </a>
+                       {% for c in p.category %}
+                        <span class="d-inline-flex badge rounded-pill bg-primary mb-1"> {{ c.name }} </span>
+                        {# <span class="d-inline-flex badge rounded-pill bg-success mb-1">c.name</span> #}
+                         {% endfor %}  
                         {# <ul class="list-unstyled d-flex justify-content-center mb-1">
                             <li>
                                 <i class="text-warning fa fa-star"></i>
@@ -35,7 +37,7 @@
                                 <i class="text-muted fa fa-star"></i>
                             </li>
                         </ul> #}
-                        <p class="text-center mb-0 fs-3">$250.00</p>
+                        <p class="text-center mb-0 fs-3">{{ p.price / 100 }} €</p>
                         <p class="text-center mb-0">{{ p.description}}</p>
                         <a href="#" class="btn btn-primary m-5"><i class="far fa-eye"></i> Voir</a>
                         <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i> ajouter au panier</a>

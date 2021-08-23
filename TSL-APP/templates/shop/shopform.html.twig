@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrer un produit{% endblock %}
+
+{% block body %}
+<div class="container p-5 ">
+<h1>ajouter un nouveau produit à la boutique</h1>
+    {{ form_start(form) }}
+        {{ form_errors(form) }}    
+        {{ form_row(form.Name) }}
+        {{ form_row(form.Description) }} 
+        {{ form_row(form.Stock) }} 
+        {{ form_row(form.Picture) }} 
+        {{ form_row(form.Price) }}  
+        {{ form_row(form.Category) }}
+
+    <button type="submit" class="btn btn-success">Enregistrer <i class="far fa-save"></i></button>
+{{ form_end(form) }}
+
+</div>
+{% endblock %}
