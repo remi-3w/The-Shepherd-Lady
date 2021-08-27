@@ -63,6 +63,22 @@
                             <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
                         </a>
                     </div>
+                    <div class="flex-fill ms-5 me-5">
+                        <ul class="nav navbar-nav d-flex justify-content-around mx-lg-auto">
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-danger" href="{{ path("app_logout") }}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                            <a class="nav-link btn btn-success" href="{{  path("security_login" )}}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-warning  " href="#">S'inscrire</a>
+                            </li>
+                        {% endif %}                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+<h1>Connexion</h1>
+{% if(error) %}
+     <div class="alert alert-danger">
+        {{ error.message }}
+    </div> 
+   
+{% endif %}
+   
+
+
+
+{{ form_start(formView) }}
+{{ form_widget(formView) }}
+{# {{ form_error(formView) }} #}
+<input type="hidden" name="go_to" value="{{ path('acceuil') }}"/>
+<button type="submit" class="btn btn-success">Connexion
+
+</button>
+
+
+
+{{ form_end(formView) }}
+</div>
+{% endblock %}
