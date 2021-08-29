@@ -25,15 +25,15 @@ $ cd ../TSL-APP
 ```
 $ npm composer install
 ```
-Configure Database connexion on .env file and play migration
+4- Configure Database connexion on .env file and play migration
 ```
 $ php bin/console make:migrations
 ```
-run symfony server
+5- run symfony server
 ```
 $ symfony serve
 ```
-watch result
+6- watch result
 ```
 $ Listening on https://127.0.0.1:8000
 ```
