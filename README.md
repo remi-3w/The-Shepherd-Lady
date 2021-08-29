@@ -12,17 +12,28 @@ v1.1 : fix bug + amélioration
 
 ## Installation
 ***
-A little intro about the installation.
+Some action & steps about the installation.
+1- clone folders & files ont your local environemnt
 ```
 $ git clone https://example.com
 ```
+2- go to init folder
+```
 $ cd ../TSL-APP
+```
+3- add librairy 
 ```
 $ npm composer install
 ```
+Configure Database connexion on .env file and play migration
+```
 $ php bin/console make:migrations
 ```
-$ Symfony serve
+run symfony server
+```
+$ symfony serve
+```
+watch result
 ```
 $ Listening on https://127.0.0.1:8000
 ```
