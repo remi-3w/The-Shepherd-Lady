@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+{% if quantities == 0 %}
+<h1 class="text-center">Votre panier est vide</h1>
+{% else %}
+<div class="container">
+<h1>Votre Panier</h1>    
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Prix à l'unité</th>
+            <th>Quantité</th>
+            <th>Total TTC</th>
+            <th></th>
+        </tr>
+    </thead>
+        
+    <tbody>    
+    {% for item in items %}
+        <tr>   
+            <td>{{ item.product.name}}</td>          
+            <td>{{ item.product.price /100}} €</td>
+            <td><a href="{{ path("cart_decrement", {'id':item.product.id}) }}" class="btn  btn-sm"><i class="fas fa-minus-square"></i></a>
+            {{ item.qty }}
+            <a href="{{ path("cart_add", {'id':item.product.id}) }}" class="btn  btn-sm"><i class="fas fa-plus-square"></i></a> </td>
+            <td>{{ item.qty * item.product.price /100 }} €</td>    
+            <td>
+            <a href="{{ path("cart_delete", {'id':item.product.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+            </td>  
+             
+        </tr>
+    {% endfor %} 
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan ="2" >Total </td>
+            <td>{{quantities}}</td>          
+            <td>{{total / 100}} €</td>            
+        </tr>
+    </tfoot>
+</table>
+
+    
+
+{% endif %}
+
+
+{% if quantities == 0 %}
+
+{% else %}
+<h1>Votre panier contient {{ quantities}} article(s) et s'éleve à un montant de {{ total /100 }} € </h1>
+{% endif %}
+</div>
+{% endblock %}
