@@ -4,6 +4,12 @@
 ***
 Site internet e-commerce pour vendre des articles artisanaux autour du DIY, axé sur le tricot, la couture.
 
+** Version v.0
+***
+v.0 : en cours de développement
+v.1 : mise ne ligne
+v1.1 : fix bug + amélioration
+
 ## Installation
 ***
 A little intro about the installation.
