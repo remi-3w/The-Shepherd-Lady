@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Form\ProductType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,7 +51,7 @@ class ShopController extends AbstractController
                 $product->setSlug(strtolower($this->slugger->slug($product->getName())));                 
                 $em->persist($product);
                 $em->flush();
-                    //dd($product); 
+                
                 return $this->redirectToRoute('shop');
        }
 
@@ -67,13 +66,8 @@ class ShopController extends AbstractController
      */
     public function product($id): Response
 
-    {
-       
-        //dd($products);      
-        return $this->render('shop/index.html.twig', [
-      
-            
-        ]);
+    {           
+        return $this->render('shop/index.html.twig');
     }
 
     /**
@@ -84,16 +78,11 @@ class ShopController extends AbstractController
         $product = $productRepository->find($id);
         $form = $this->createForm(ProductType::class, $product);
         $form ->handleRequest($request);
-        if($form->isSubmitted()){
-            
+        if($form->isSubmitted()){            
             $em->flush();
-
             return $this->redirectToRoute('shop');
-
-        }       
-
+        } 
         $formView = $form->createView();
-
 
         return $this->render('shop/shopform.html.twig', [
             'product' => $product,

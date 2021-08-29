@@ -18,8 +18,10 @@
     <body>
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-right">    
-            <img src="images/LogoTSL.png" class="d-inline-block align-text-top"  height="80" alt="logo">
+        <div class="container d-flex justify-content-between align-items-right">
+       
+         <img src="{{ asset('images/LogoTSL.png')}}" class="d-inline-block align-text-top"  height="80" alt="logo">    
+            {# <img src="images/LogoTSL.png" class="d-inline-block align-text-top"  height="80" alt="logo"> #}
             <div class="ms-3">
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">The Shepherd Lady</a>
             <p>Accessoires couture<p>
@@ -51,17 +53,14 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                        {# <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                             <i class="fa fa-fw fa-search text-dark me-3"></i>
-                        </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
+                        </a> #}
+                        <a class="nav-icon position-relative text-decoration-none" href="{{ path('cart_show')}}">
                             <i class="fa fa-fw fa-cart-arrow-down text-dark me-3"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"> {{ cartService.getQuantities }}</span>
                         </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
-                            <i class="fa fa-fw fa-user text-dark me-3"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                        </a>
+                       
                     </div>
                     <div class="flex-fill ms-5 me-5">
                         <ul class="nav navbar-nav d-flex justify-content-around mx-lg-auto">
@@ -83,7 +82,15 @@
             </div>
         </div>
     </nav>
-
+    <div class="container mt-4">
+        {% for rubrique, messages in app.flashes %}
+        <div class=" alert alert-{{rubrique}} ">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}            
+        </div>        
+        {% endfor %}
+    </div>
 
 
 
