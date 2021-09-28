@@ -40,7 +40,7 @@ class PurchasePersister
                 ->setProductPrice($cartItem->product->getPrice());
                     $this->em->persist($purchaseItem);
             }
-        $this->cartService->empty();    
+        $this->cartService->empty();
         $this->em->flush();
     }        
 }
