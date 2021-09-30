@@ -5,11 +5,12 @@ namespace App\Controller;
 
 use App\Cart\CartService;
 use App\Repository\ProductRepository;
+use App\Form\PurchaseConfirmationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 
 class CartController extends AbstractController
 {    
@@ -37,9 +38,10 @@ class CartController extends AbstractController
             $this->cartService->add($id);       
       
             $this->addFlash('success' , "Le produit a bien été ajouté au panier");
-
+            
                 return $this->redirectToRoute('cart_show', [
                     'slug' => $product->getslug()
+                    
                 ]);
         }
 
@@ -77,24 +79,18 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/", name="cart_show")
      */
-    public function show(): Response
+    public function show(FormFactoryInterface $formPurchase): Response
     {
-       $detailsCart = $this->cartService->getDetailCartItem();
-
+       $detailsCart = $this->cartService->getDetailedCartItems();
        $total = $this->cartService->getTotal();
-
        $quantities =$this->cartService->getQuantities();
-     
-       
-
+       $formPurchase = $this->createForm(PurchaseConfirmationType::class);
         return $this->render('cart/index.html.twig',[
             'items' => $detailsCart,
             'total' => $total,
-            'quantities' => $quantities
-           
+            'quantities' => $quantities,
+            'formPurchase' => $formPurchase->createView()           
         ]);
-    }
-    
-       
+    }       
     }
 

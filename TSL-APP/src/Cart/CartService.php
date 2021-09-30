@@ -27,6 +27,14 @@ class CartService
     
     }
 
+    public function saveCart(){
+        $cart=[];
+        $this->session->set('cart',$cart);
+    }
+    public function empty(){
+        $this->saveCart([]);        
+    }
+
     public function decrement(int $id)
     {
         $cart = $this->session->get('cart', []);
@@ -59,7 +67,6 @@ class CartService
 
     public function getQuantities(): int
     {
-
         $quantities=0;
         foreach ($this->session->get('cart', []) as $id => $qty)
         {
@@ -69,13 +76,14 @@ class CartService
             }
             $quantities += ($qty); 
         }
-
         return $quantities;
-
     }
 
-
-    public function getDetailCartItem(): array
+    /**
+     * @return CartItem[] 
+     * 
+     */
+    public function getDetailedCartItems(): array
     {
         $detailedCart =[];
 
@@ -86,10 +94,7 @@ class CartService
                 continue;
             }
 
-            $detailedCart[] =[
-                'product' => $product,
-                'qty' => $qty
-            ];
+            $detailedCart[] = new CartItem($product, $qty);
            
         } 
             return $detailedCart; 
@@ -98,7 +103,7 @@ class CartService
     public function remove(int $id)
     {
         $cart = $this->session->get('cart', []);
-            unset($cart[$id]);
+        unset($cart[$id]);
         $this->session->set('cart', $cart);
 
     }
