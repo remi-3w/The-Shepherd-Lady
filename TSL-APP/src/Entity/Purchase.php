@@ -53,7 +53,7 @@ class Purchase
     private $status ="PENDING";
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="Purchases")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="purchases")
      */
     private $user;
 

@@ -20,6 +20,9 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
-
+    App\Stripe\StripeService:
+        arguments:
+            $secretKey: 'sk_test_51JfkseDkQ4vmM9lSoFTSzsVfwJAjTtbCoOMHpuStEJqGDzsEfyTCOi9fkxVlJaBsTLNWHujwrXEPKgXzebWkcyYe00JdbwHBcS'
+            $publicKey: 'pk_test_51JfkseDkQ4vmM9lSkdwnBcrAd8VX3P9s6npBbRZwCS8cM7wiVwA6iL67uPzDKjaBFP8wZT4ji2SMhGO1jrd9GZbR00RR2ZPwjQ'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

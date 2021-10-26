@@ -43,7 +43,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $FullName;
 
     /**
-     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="User")
+     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user")
      */
     private $purchases;
 
