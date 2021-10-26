@@ -17,15 +17,17 @@
             <th>Date de commande</th>
             <th>Total</th>
         </tr>
-        <tr>
-        {% for p in purchases %}
-            <td>{{ p.id }}</td>
-            <td>{{ p.adresse }}</td>
-            <td>{{ p.purcharseAt |date('d/m/Y H:i') }}</td>
-            <td>{{ p.total }}</td>
-        {% endfor %}           
-        </tr>
-    </thead>
+        </thead>
+        </tbody>
+            {% for p in purchases %}
+                <tr>        
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.adress }}</td>       
+                    <td>{{ p.PurchaseAt|date('d/m/Y H:i') }}</td>
+                    <td>{{ p.total }}</td>
+                </tr>
+           {% endfor %}
+        </tbody>
 </table>
 </div>
 

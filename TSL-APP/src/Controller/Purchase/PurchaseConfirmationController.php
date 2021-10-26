@@ -3,11 +3,11 @@ namespace App\Controller\Purchase;
 
 use App\Entity\Purchase;
 use App\Cart\CartService;
-use App\Form\PurchaseConfirmationType;
 use App\Purchase\PurchasePersister;
+use App\Form\PurchaseConfirmationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -48,7 +48,10 @@ class PurchaseConfirmationController extends AbstractController
         /** @var Purchase */
         $purchase = $form->getData();
         $this->persister->storePurchase($purchase);
-        $this->addFlash('succes', 'Vous avez bien enregistré votre panier');
-        return $this->redirectToRoute('acceuil');
+
+       
+        return $this->redirectToRoute('purchase_payment_form', [
+            'id' => $purchase->getId()
+        ]);
     }
 }

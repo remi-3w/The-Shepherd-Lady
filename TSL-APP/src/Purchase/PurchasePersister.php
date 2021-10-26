@@ -31,16 +31,16 @@ class PurchasePersister
         $this->em->persist($purchase);
         foreach($this->cartService->getDetailedCartItems() as $cartItem)
             {
-                $purchaseItem = new PurchaseItem;
-                $purchaseItem->setPurchase($purchase)
+            $purchaseItem = new PurchaseItem;
+            $purchaseItem->setPurchase($purchase)
                 ->setProduct($cartItem->product)
                 ->setProductName($cartItem->product->getName())
                 ->setQuantity($cartItem->qty)
                 ->setTotal($cartItem->getTotal())
                 ->setProductPrice($cartItem->product->getPrice());
-                    $this->em->persist($purchaseItem);
+            $this->em->persist($purchaseItem);
             }
-        $this->cartService->empty();
+       
         $this->em->flush();
     }        
 }
