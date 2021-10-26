@@ -29,6 +29,7 @@ Paiement avec Stripe
   const stripePublicKey ="pk_test_51JfkseDkQ4vmM9lSkdwnBcrAd8VX3P9s6npBbRZwCS8cM7wiVwA6iL67uPzDKjaBFP8wZT4ji2SMhGO1jrd9GZbR00RR2ZPwjQ"; 
   const redirectAfterSuccesUrl ="{{ url('purchase_payment_success', {'id': purchase.id }) }}"
   </script>
-  <script src='/js/payment.js'></script> 
+  <script src="{{ asset('js/payment.js') }}"></script>
+  
    
 {% endblock %}
